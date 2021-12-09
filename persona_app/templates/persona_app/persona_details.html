@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Persona details{% endblock title %}
+
+{% block content %}
+    <p> <a href="{% url 'persona_list' %}">Back to the list</a> </p>
+    <h2>{{ persona.first_name }} {{ persona.last_name }} </h2>
+    <img src="{{ persona.picture }}" alt="picture-persona">
+    <ul>
+        <li>{{ persona.username }}</li>
+        <li>{{ persona.age }} years old</li>
+        <li>{{ persona.adress_number }} {{ persona.address_street }}, {{ persona.postcode }} {{ persona.city }}, {{ persona.country }}</li>
+        <li>{{ persona.email }}</li>
+    <ul>
+{% endblock content %}
