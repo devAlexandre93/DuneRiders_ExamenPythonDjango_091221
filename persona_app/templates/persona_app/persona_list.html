@@ -7,8 +7,10 @@
     <ul>
         {% for persona in personas %}
             <li>
-                Persona : ({{ persona.id }}) <a href="{% url 'persona_details' persona.id %}">{{ persona.first_name }} {{ persona.last_name }} </a> {{ persona.email }}
+                ({{ persona.id }}) <a href="{% url 'persona_details' persona.id %}">{{ persona.first_name }} {{ persona.last_name }} </a> {{ persona.email }}
             </li>
         {% endfor %}
-<ul>
+    <ul>
+    <br>
+    <a href="{% url 'persona_generate' %}"> Persona Generate </a>
 {% endblock content %}

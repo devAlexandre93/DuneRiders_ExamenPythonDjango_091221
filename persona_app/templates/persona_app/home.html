@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+    <h2>Links to navigate on our app</h2>
+    <ul>
+        <li> <a href="{% url 'persona_list' %}"> Persona List </a> </li>
+        <li> <a href="{% url 'persona_generate' %}"> Persona Generate </a> </li>
+    <ul>
+{% endblock content %}

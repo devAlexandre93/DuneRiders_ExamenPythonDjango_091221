@@ -5,7 +5,7 @@ from django.db import models
 class Persona(models.Model):
     
     password = models.CharField(max_length=20)    
-    picture = models.CharField(max_length=50)
+    picture = models.CharField(max_length=60)
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     address_street = models.CharField(max_length=50)

@@ -5,6 +5,9 @@ from .models import Persona
 
 # Create your views here.
 
+def home(request):
+    return render(request, 'persona_app/home.html') 
+
 def persona_list(request):
     personas = Persona.objects.all().order_by('-id')
     context = {
