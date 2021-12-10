@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils import html
 from .models import Persona
-import requests
+#import requests
 #import json
 
 # Create your views here.
