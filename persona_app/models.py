@@ -9,7 +9,7 @@ class Persona(models.Model):
     first_name = models.CharField(max_length=20)
     last_name = models.CharField(max_length=20)
     address_street = models.CharField(max_length=50)
-    adress_number = models.IntegerField()
+    address_number = models.IntegerField()
     city = models.CharField(max_length=15)
     country = models.CharField(max_length=15)
     postcode = models.IntegerField()

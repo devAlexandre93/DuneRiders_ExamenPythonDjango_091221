@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils import html
+from requests.api import post
 from .models import Persona
 import requests
 
@@ -25,31 +26,40 @@ def persona_details(request, id):
 
 def persona_generate(request):
     data = requests.get('https://randomuser.me/api?nat=fr').json()
+    # Add variables to get datas from the randomuserapi
     first_name = data['results'][0]['name']['first']
-    print(first_name)
     last_name = data['results'][0]['name']['last']
-    print(last_name)
     address_street = data['results'][0]['location']['street']['name']
-    print(address_street)
     address_number = data['results'][0]['location']['street']['number']
-    print(address_number)
     city = data['results'][0]['location']['city']
-    print(city)
     country = data['results'][0]['location']['country']
-    print(country)
     postcode = data['results'][0]['location']['postcode']
-    print(postcode)
     email = data['results'][0]['email']
-    print(email)
     username = data['results'][0]['login']['username']
-    print(username)
     password = data['results'][0]['login']['password']
-    print(password)
     age = data['results'][0]['registered']['age']
-    print(age)
     picture = data['results'][0]['picture']['medium']
-    print(picture)
-    # Persona.objects.__new__(Persona)
-    return HttpResponse(f'Generate persona')
-    #return redirect('persona_details' persona.id)
-    #return render(request, 'persona_app/persona_details.html', context)
+    # Generate the persona
+    new_Persona = Persona(
+       first_name = first_name,
+       last_name = last_name,
+       address_street = address_street,
+       address_number = address_number,
+       city = city,
+       country = country,
+       postcode = postcode,
+       email = email,
+       username = username,
+       password = password,
+       age = age,
+       picture = picture
+    )
+    # Save the persona in the database
+    new_Persona.save()
+    # Redirect to the page persona_details of the new persona
+    return redirect('persona_details', new_Persona.id)
+
+def persona_delete(request, id):
+    persona = Persona.objects.get(id=id)
+    persona.delete()
+    return redirect('persona_list')

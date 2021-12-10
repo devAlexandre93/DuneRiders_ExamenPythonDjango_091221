@@ -12,4 +12,6 @@
         <li>{{ persona.adress_number }} {{ persona.address_street }}, {{ persona.postcode }} {{ persona.city }}, {{ persona.country }}</li>
         <li>{{ persona.email }}</li>
     <ul>
+    <br>
+    <a href="{% url 'persona_delete' persona.id %}">Delete</a>
 {% endblock content %}
