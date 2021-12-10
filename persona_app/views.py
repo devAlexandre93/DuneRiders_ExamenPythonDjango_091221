@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.utils import html
 from .models import Persona
-#import requests
-#import json
+import requests
 
 # Create your views here.
 
@@ -25,5 +24,8 @@ def persona_details(request, id):
     return render(request, 'persona_app/persona_details.html', context)
 
 def persona_generate(request):
-    #r = requests.get(" https://randomuser.me/api?nat=fr")
-    return HttpResponse(f'Persona generate')
+    data = requests.get('https://randomuser.me/api?nat=fr').json()
+    print(data['results'][0]['name']['first'])
+    return HttpResponse(f'Generate persona')
+    #return redirect('persona_details' persona.id)
+    #return render(request, 'persona_app/persona_details.html', context)
